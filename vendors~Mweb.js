@@ -526,12 +526,12 @@
                     return n && (e[n] = t), e;
                 }, {});
             t.isoLocaleToR2Language = (e) => i[e];
-            const a = /^(?:(?<alphabet>Cy|Lt)[-_])?(?<language>[a-zA-Z]{2,4})(?:[-_](?<country>[a-zA-Z]{2,4}))?$/;
+            const a = /^(?:(Cy|Lt)[-_])?([a-zA-Z]{2,4})(?:[-_]([a-zA-Z]{2,4}))?$/;
             t.toISOLocale = (e) => {
                 if (!e) return;
                 const t = e.match(a);
-                if (!t || !t.groups) return;
-                const { alphabet: n, language: o, country: r } = t.groups;
+                if (!t || !t.length) return;
+                const { alphabet: n, language: o, country: r } = { alphabet: t[1], language: t[2], country: t[3] };
                 if (!o) return;
                 let i = o.toLowerCase();
                 return n && (i = `${n}-${i}`), r && (i = `${i}-${r.toUpperCase()}`), (i = s[i] || i), i;
